@@ -1,0 +1,41 @@
+<idea-plugin>
+  <id>com.your.company.unique.plugin.id</id>
+  <name>Plugin display name here</name>
+  <version>1.0</version>
+  <vendor email="support@yourcompany.com" url="http://www.yourcompany.com">YourCompany</vendor>
+
+  <description><![CDATA[
+      Enter short description for your plugin here.<br>
+      <em>most HTML tags may be used</em>
+    ]]></description>
+
+  <change-notes><![CDATA[
+      Add change notes here.<br>
+      <em>most HTML tags may be used</em>
+    ]]>
+  </change-notes>
+
+	<idea-version since-build="PS-172"/>
+
+
+	<!-- please see http://www.jetbrains.org/intellij/sdk/docs/basics/getting_started/plugin_compatibility.html
+		 on how to target different products -->
+  <!-- uncomment to enable plugin in all products
+  <depends>com.intellij.modules.lang</depends>
+  -->
+
+  <extensions defaultExtensionNs="com.intellij">
+    <!-- Add your extensions here -->
+  </extensions>
+
+	<depends>com.jetbrains.php</depends>
+	<depends>com.intellij.modules.platform</depends>
+
+	<actions>
+		<action id="AddLeafDialog" class="com.gmail.robmadeyou.CompostedManure.AddLeafDialog" text="New Leaf" description="Adding leafs yo">
+			<add-to-group group-id="NewGroup" anchor="first" />
+			<keyboard-shortcut keymap="$default" first-keystroke="shift alt L" />
+		</action>
+	</actions>
+
+</idea-plugin>
