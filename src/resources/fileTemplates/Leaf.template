@@ -1,0 +1,21 @@
+<?php
+
+namespace {{ ns }};
+
+use Rhubarb\Leaf\Leaves\Leaf;
+
+class {{ class }} extends Leaf
+{
+    /** @var {{ class }}Model $model **/
+    protected $model;
+
+    public function getViewClass()
+    {
+        return {{ class }}View::class;
+    }
+
+    public function createModel()
+    {
+        return new {{ class }}Model();
+    }
+}

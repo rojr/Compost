@@ -1,6 +1,6 @@
 <idea-plugin>
-  <id>com.your.company.unique.plugin.id</id>
-  <name>Plugin display name here</name>
+  <id>com.gmail.robmadeyou.CompostedManure</id>
+  <name>Composted Manure</name>
   <version>1.0</version>
   <vendor email="support@yourcompany.com" url="http://www.yourcompany.com">YourCompany</vendor>
 
@@ -31,11 +31,13 @@
 	<depends>com.jetbrains.php</depends>
 	<depends>com.intellij.modules.platform</depends>
 
-	<actions>
-		<action id="AddLeafDialog" class="com.gmail.robmadeyou.CompostedManure.AddLeafDialog" text="New Leaf" description="Adding leafs yo">
-			<add-to-group group-id="NewGroup" anchor="first" />
-			<keyboard-shortcut keymap="$default" first-keystroke="shift alt L" />
-		</action>
-	</actions>
+  <actions>
+    <group id="RhubarbMenu" text="Rhubarb" popup="true">
+        <add-to-group group-id="NewGroup" anchor="first" />
+        <action id="AddLeafDialog" class="com.gmail.robmadeyou.CompostedManure.actions.AddLeafDialog" text="New Leaf" description="Adding leafs yo">
+          <keyboard-shortcut keymap="$default" first-keystroke="shift alt L" />
+        </action>
+    </group>
+  </actions>
 
 </idea-plugin>

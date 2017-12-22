@@ -1,0 +1,19 @@
+<?php
+
+namespace {{ ns }};
+
+use Rhubarb\Leaf\Views\View;
+
+class {{ class }} extends View
+{
+    /** @var {{ leafname }}Model $model **/
+    protected $model;
+
+    protected function createSubLeaves()
+    {
+    }
+
+    protected function printViewContent()
+    {
+    }
+}
