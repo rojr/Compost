@@ -1,5 +1,5 @@
 <idea-plugin>
-  <id>com.gmail.robmadeyou.CompostedManure</id>
+  <id>com.gmail.robmadeyou.compost</id>
   <name>Composted Manure</name>
   <version>1.0</version>
   <vendor email="support@yourcompany.com" url="http://www.yourcompany.com">YourCompany</vendor>
@@ -34,7 +34,7 @@
   <actions>
     <group id="RhubarbMenu" text="Rhubarb" popup="true">
         <add-to-group group-id="NewGroup" anchor="first" />
-        <action id="AddLeafDialog" class="com.gmail.robmadeyou.CompostedManure.actions.AddLeafDialog" text="New Leaf" description="Adding leafs yo">
+        <action id="AddLeafDialog" class="com.gmail.robmadeyou.compost.actions.AddLeafDialog" text="New Leaf" description="Adding leafs yo">
           <keyboard-shortcut keymap="$default" first-keystroke="shift alt L" />
         </action>
     </group>

@@ -1,4 +1,4 @@
-package com.gmail.robmadeyou.CompostedManure.util;
+package com.gmail.robmadeyou.compost.util;
 
 import com.intellij.openapi.project.Project;
 import com.intellij.openapi.util.io.StreamUtil;
@@ -72,17 +72,6 @@ public class PhpBundleFileFactory {
         }
 
         return namespace.replaceAll("(^\\\\+|\\\\+$)", "");
-    }
-
-    @Nullable
-    private static VirtualFile getAndCreateDirectory(@NotNull VirtualFile directory, @NotNull String relativePath) {
-
-        try {
-            return VfsUtil.createDirectoryIfMissing(directory, relativePath);
-        } catch (IOException ignored) {
-        }
-
-        return null;
     }
 
     private static boolean fileExists(@NotNull VirtualFile bundleDir, @NotNull String className) {
