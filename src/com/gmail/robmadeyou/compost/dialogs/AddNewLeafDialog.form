@@ -72,6 +72,7 @@
                   </grid>
                 </constraints>
                 <properties>
+                  <name value="Leaf"/>
                   <text value=""/>
                 </properties>
               </component>
@@ -84,6 +85,7 @@
                 <properties>
                   <editable value="true"/>
                   <enabled value="false"/>
+                  <name value="View"/>
                 </properties>
               </component>
               <component id="c109c" class="javax.swing.JTextField" binding="modelName">
@@ -95,6 +97,7 @@
                 <properties>
                   <editable value="true"/>
                   <enabled value="false"/>
+                  <name value="Model"/>
                 </properties>
               </component>
               <component id="8cad4" class="javax.swing.JCheckBox" binding="modelCheckBox">
@@ -122,6 +125,7 @@
                 <properties>
                   <editable value="true"/>
                   <enabled value="false"/>
+                  <name value="ViewBridge"/>
                   <text value=""/>
                 </properties>
               </component>

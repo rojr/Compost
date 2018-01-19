@@ -6,7 +6,7 @@ use Rhubarb\Leaf\Views\View;
 
 class {{ class }} extends View
 {
-    /** @var {{ leafname }}Model $model **/
+    /** @var {{ Model }} $model **/
     protected $model;
 
     protected function createSubLeaves()

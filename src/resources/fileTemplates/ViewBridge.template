@@ -1,0 +1,7 @@
+rhubarb.vb.create('{{ ViewBridge }}', function() {
+    return {
+        attachEvents:function() {
+
+        }
+    };
+})

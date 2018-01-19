@@ -1,43 +1,43 @@
 <idea-plugin>
-  <id>com.gmail.robmadeyou.compost</id>
-  <name>Composted Manure</name>
-  <version>1.0</version>
-  <vendor email="support@yourcompany.com" url="http://www.yourcompany.com">YourCompany</vendor>
+    <id>com.gmail.robmadeyou.compost</id>
+    <name>Compost</name>
+    <version>1.0</version>
+    <vendor email="support@yourcompany.com" url="http://www.yourcompany.com">Rojrpany</vendor>
 
-  <description><![CDATA[
-      Enter short description for your plugin here.<br>
-      <em>most HTML tags may be used</em>
+    <description><![CDATA[
+  <h1>Helping Rhubarb applications grow nice and big!</h1>
     ]]></description>
 
-  <change-notes><![CDATA[
+    <change-notes><![CDATA[
       Add change notes here.<br>
       <em>most HTML tags may be used</em>
     ]]>
-  </change-notes>
+    </change-notes>
 
-	<idea-version since-build="PS-172"/>
+    <idea-version since-build="PS-172"/>
 
 
-	<!-- please see http://www.jetbrains.org/intellij/sdk/docs/basics/getting_started/plugin_compatibility.html
-		 on how to target different products -->
-  <!-- uncomment to enable plugin in all products
-  <depends>com.intellij.modules.lang</depends>
-  -->
+    <!-- please see http://www.jetbrains.org/intellij/sdk/docs/basics/getting_started/plugin_compatibility.html
+         on how to target different products -->
+    <!-- uncomment to enable plugin in all products
+    <depends>com.intellij.modules.lang</depends>
+    -->
 
-  <extensions defaultExtensionNs="com.intellij">
-    <!-- Add your extensions here -->
-  </extensions>
+    <extensions defaultExtensionNs="com.intellij">
+        <!-- Add your extensions here -->
+    </extensions>
 
-	<depends>com.jetbrains.php</depends>
-	<depends>com.intellij.modules.platform</depends>
+    <depends>com.jetbrains.php</depends>
+    <depends>com.intellij.modules.platform</depends>
 
-  <actions>
-    <group id="RhubarbMenu" text="Rhubarb" popup="true">
-        <add-to-group group-id="NewGroup" anchor="first" />
-        <action id="AddLeafDialog" class="com.gmail.robmadeyou.compost.actions.AddLeafDialog" text="New Leaf" description="Adding leafs yo">
-          <keyboard-shortcut keymap="$default" first-keystroke="shift alt L" />
-        </action>
-    </group>
-  </actions>
+    <actions>
+        <group id="RhubarbMenu" text="Rhubarb" popup="true">
+            <add-to-group group-id="NewGroup" anchor="first"/>
+            <action id="AddLeafDialog" class="com.gmail.robmadeyou.compost.actions.AddLeafDialog" text="New Leaf"
+                    description="Adding leafs yo">
+                <keyboard-shortcut keymap="$default" first-keystroke="shift alt E"/>
+            </action>
+        </group>
+    </actions>
 
 </idea-plugin>

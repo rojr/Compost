@@ -6,16 +6,16 @@ use Rhubarb\Leaf\Leaves\Leaf;
 
 class {{ class }} extends Leaf
 {
-    /** @var {{ class }}Model $model **/
+    /** @var {{ Model }} $model **/
     protected $model;
 
     public function getViewClass()
     {
-        return {{ class }}View::class;
+        return {{ View }}::class;
     }
 
     public function createModel()
     {
-        return new {{ class }}Model();
+        return new {{ Model }}();
     }
 }

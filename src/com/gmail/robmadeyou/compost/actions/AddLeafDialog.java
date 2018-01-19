@@ -5,11 +5,8 @@ import com.gmail.robmadeyou.compost.util.PhpBundleFileFactory;
 import com.intellij.openapi.actionSystem.AnAction;
 import com.intellij.openapi.actionSystem.AnActionEvent;
 import com.intellij.openapi.actionSystem.PlatformDataKeys;
-import com.intellij.openapi.ui.Messages;
 import com.intellij.openapi.vfs.VirtualFile;
 
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.util.HashMap;
 
 public class AddLeafDialog extends AnAction {
@@ -17,29 +14,26 @@ public class AddLeafDialog extends AnAction {
     public void actionPerformed(AnActionEvent e) {
         AddNewLeafDialog dialog = new AddNewLeafDialog(e.getProject());
 
+        VirtualFile file = PlatformDataKeys.VIRTUAL_FILE.getData(e.getDataContext());
+
         dialog.setOnOkPressed(new AddNewLeafDialog.AddNewLeafDialogEvent() {
             @Override
             public void onOK() {
-                String a = "aa";
+                if (file != null) {
+                    HashMap<String, String> current = (HashMap<String, String>) this.values.clone();
+                    for (String name : this.values.keySet()) {
+                        try {
+                            PhpBundleFileFactory.createFileWithTemplate(e.getProject(), file, name, current.get(name), current);
+                        } catch (Exception ex) {
+                            System.out.println(ex.getMessage());
+                        }
+                    }
+
+                }
             }
         });
 
         dialog.pack();
         dialog.setVisible(true);
-
-        VirtualFile file = PlatformDataKeys.VIRTUAL_FILE.getData(e.getDataContext());
-
-        String filename = Messages.showInputDialog("What is the name of this leaf?", "Enter Name", null);
-        try {
-            PhpBundleFileFactory.createFileWithTemplate(e.getProject(), file, "Leaf", filename, new HashMap<>());
-            PhpBundleFileFactory.createFileWithTemplate(e.getProject(), file, "Model", filename + "Model", new HashMap<>());
-
-            HashMap viewHashmap = new HashMap<String, String>();
-            viewHashmap.put("leafname", filename);
-            PhpBundleFileFactory.createFileWithTemplate(e.getProject(), file, "View", filename + "View", viewHashmap);
-        } catch (Exception ex) {
-            System.out.println("Fuck " + ex.getMessage());
-        }
-
     }
 }

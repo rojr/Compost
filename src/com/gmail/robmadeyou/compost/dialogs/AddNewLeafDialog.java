@@ -5,6 +5,7 @@ import com.intellij.openapi.project.Project;
 
 import javax.swing.*;
 import java.awt.event.*;
+import java.util.HashMap;
 
 public class AddNewLeafDialog extends JDialog {
     private JPanel contentPane;
@@ -96,18 +97,16 @@ public class AddNewLeafDialog extends JDialog {
 
     public abstract static class AddNewLeafDialogEvent {
 
-        protected JTextField view;
-        protected JTextField model;
-        protected JTextField leaf;
-        protected JTextField bridge;
+        public HashMap<String,String> values = new HashMap<>();
 
         public abstract void onOK();
 
         public void raise(JTextField view, JTextField model, JTextField leaf, JTextField bridge) {
-            this.view = view;
-            this.model = model;
-            this.leaf = leaf;
-            this.bridge = bridge;
+            for (JTextField f : new JTextField[]{view, model, leaf, bridge}) {
+                if (f.isEnabled()) {
+                    values.put(f.getName(), f.getText());
+                }
+            }
         }
     }
 }
