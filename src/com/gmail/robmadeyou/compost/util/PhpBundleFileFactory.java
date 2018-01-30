@@ -1,6 +1,8 @@
 package com.gmail.robmadeyou.compost.util;
 
+import com.intellij.ide.fileTemplates.FileTemplateManager;
 import com.intellij.openapi.project.Project;
+import com.intellij.openapi.project.ex.ProjectEx;
 import com.intellij.openapi.util.io.StreamUtil;
 import com.intellij.openapi.vfs.VfsUtil;
 import com.intellij.openapi.vfs.VirtualFile;
@@ -40,6 +42,8 @@ public class PhpBundleFileFactory {
         CodeStyleManager.getInstance(project).reformat(fileFromText);
 
         PsiDirectoryFactory.getInstance(project).createDirectory(virtualFile).add(fileFromText);
+
+        FileTemplateManager.getInstance(project).getInternalTemplate("lol");
     }
 
     private static String getNamespaceForVirtualFolder(Project project, VirtualFile virtualFile)

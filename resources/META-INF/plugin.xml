@@ -31,7 +31,7 @@
     <depends>com.intellij.modules.platform</depends>
 
     <actions>
-        <group id="RhubarbMenu" text="Rhubarb" popup="true">
+        <group id="RhubarbMenu" text="Rhubarb" popup="true" icon="CompostIcons.RHUBARB_ICON">
             <add-to-group group-id="NewGroup" anchor="first"/>
             <action id="AddLeafDialog" class="com.gmail.robmadeyou.compost.actions.AddLeafDialog" text="New Leaf"
                     description="Adding leafs yo">
