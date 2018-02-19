@@ -1,8 +1,6 @@
 package com.gmail.robmadeyou.compost.util;
 
-import com.intellij.ide.fileTemplates.FileTemplateManager;
 import com.intellij.openapi.project.Project;
-import com.intellij.openapi.project.ex.ProjectEx;
 import com.intellij.openapi.util.io.StreamUtil;
 import com.intellij.openapi.vfs.VfsUtil;
 import com.intellij.openapi.vfs.VirtualFile;
@@ -19,7 +17,7 @@ import org.jetbrains.annotations.Nullable;
 import java.io.IOException;
 import java.util.Map;
 
-public class PhpBundleFileFactory {
+public class CompostFileManagementUtil {
     public static void createFileWithTemplate(Project project, @NotNull VirtualFile virtualFile, @NotNull String template, @NotNull String className, Map<String, String> vars) throws Exception {
         if (fileExists(virtualFile, className)) {
             throw new Exception("File already exists");
@@ -39,11 +37,19 @@ public class PhpBundleFileFactory {
         }
 
         PsiFile fileFromText = PsiFileFactory.getInstance(project).createFileFromText(className + ".php", PhpLanguage.INSTANCE, fileTemplateContent);
+
         CodeStyleManager.getInstance(project).reformat(fileFromText);
-
         PsiDirectoryFactory.getInstance(project).createDirectory(virtualFile).add(fileFromText);
+    }
 
-        FileTemplateManager.getInstance(project).getInternalTemplate("lol");
+    public static void createPhpClassFromTemplate()
+    {
+
+    }
+
+    public static void createFileFromTemplate()
+    {
+        
     }
 
     private static String getNamespaceForVirtualFolder(Project project, VirtualFile virtualFile)
@@ -86,7 +92,7 @@ public class PhpBundleFileFactory {
     private static String getFileTemplateContent(@NotNull String filename) {
         try {
             // replace on windows, just for secure reasons
-            return StreamUtil.readText(PhpBundleFileFactory.class.getResourceAsStream(filename), "UTF-8").replace("\r\n", "\n");
+            return StreamUtil.readText(CompostFileManagementUtil.class.getResourceAsStream(filename), "UTF-8").replace("\r\n", "\n");
         } catch (IOException e) {
             return null;
         }

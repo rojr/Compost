@@ -1,0 +1,33 @@
+<?php
+
+namespace $nameSpace;
+
+use Rhubarb\Leaf\Views\View;
+
+class $className extends View
+{
+    /** @var $modelName \$model **/
+    protected \$model;
+
+    protected function createSubLeaves()
+    {
+    }
+
+    protected function printViewContent()
+    {
+    }
+
+    #if ($viewBridgeName != "")
+    public function getDeploymentPackage()
+    {
+        return new LeafDeploymentPackage(
+            __DIR__ . '/$viewBridgeName'
+        );
+    }
+
+    protected function getViewBridgeName()
+    {
+        return '$viewBridgeName';
+    }
+    #end
+}

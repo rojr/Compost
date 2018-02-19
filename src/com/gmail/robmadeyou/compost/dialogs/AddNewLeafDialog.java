@@ -20,13 +20,9 @@ public class AddNewLeafDialog extends JDialog {
     private JTextField viewBridgeName;
     private JCheckBox viewBridgeCheckBox;
 
-    private Project project;
-
     private AddNewLeafDialogEvent onOkPressed;
 
-    public AddNewLeafDialog(Project project) {
-        this.project = project;
-
+    public AddNewLeafDialog() {
         setContentPane(contentPane);
         setModal(true);
         getRootPane().setDefaultButton(buttonOK);
@@ -34,26 +30,19 @@ public class AddNewLeafDialog extends JDialog {
         buttonOK.addActionListener(e -> onOK());
         buttonCancel.addActionListener(e -> onCancel());
 
-        // call onCancel() when cross is clicked
-        setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
+        setDefaultCloseOperation(DISPOSE_ON_CLOSE);
         addWindowListener(new WindowAdapter() {
             public void windowClosing(WindowEvent e) {
                 onCancel();
             }
         });
 
-        // call onCancel() on ESCAPE
-        contentPane.registerKeyboardAction(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                onCancel();
-            }
-        }, KeyStroke.getKeyStroke(KeyEvent.VK_ESCAPE, 0), JComponent.WHEN_ANCESTOR_OF_FOCUSED_COMPONENT);
+        contentPane.registerKeyboardAction((ActionListener) -> onCancel(), KeyStroke.getKeyStroke(KeyEvent.VK_ESCAPE, 0), JComponent.WHEN_ANCESTOR_OF_FOCUSED_COMPONENT);
 
         viewCheckBox.addChangeListener(new InputEnableCheckbox(viewName));
         modelCheckBox.addChangeListener(new InputEnableCheckbox(modelName));
         viewBridgeCheckBox.addChangeListener(new InputEnableCheckbox(viewBridgeName));
 
-        new TemplateImpl("test", "things");
         leafNameTextField.addKeyListener(new KeyListener() {
             @Override
             public void keyTyped(KeyEvent e) {
@@ -93,7 +82,6 @@ public class AddNewLeafDialog extends JDialog {
     }
 
     private void onCancel() {
-        // add your code here if necessary
         dispose();
     }
 

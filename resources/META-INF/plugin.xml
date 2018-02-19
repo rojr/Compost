@@ -25,6 +25,11 @@
 
     <extensions defaultExtensionNs="com.intellij">
         <!-- Add your extensions here -->
+        <internalFileTemplate name="Leaf"/>
+        <internalFileTemplate name="Model"/>
+        <internalFileTemplate name="LeafModel"/>
+        <internalFileTemplate name="View"/>
+        <internalFileTemplate name="ViewBridge"/>
     </extensions>
 
     <depends>com.jetbrains.php</depends>

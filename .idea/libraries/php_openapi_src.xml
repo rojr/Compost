@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="php-openapi-src">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/Software/phpstorm/plugins/php/lib/php-openapi.jar!/" />
+      <root url="jar://$USER_HOME$/Software/phpstorm/plugins/php/lib/commons-compress-1.10.jar!/" />
+      <root url="jar://$USER_HOME$/Software/phpstorm/plugins/php/lib/php.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/Software/phpstorm/plugins/php/lib/php-openapi-src.jar!/" />
+    </SOURCES>
+  </library>
+</component>
