@@ -1,13 +1,20 @@
 package com.gmail.robmadeyou.compost.templates;
 
-import com.jetbrains.php.lang.liveTemplates.PhpDefaultLiveTemplatesProvider;
+import com.intellij.codeInsight.template.impl.DefaultLiveTemplatesProvider;
+import org.jetbrains.annotations.Nullable;
 
-public class CompostLiveTemplateProvider extends PhpDefaultLiveTemplatesProvider {
+public class CompostLiveTemplateProvider implements DefaultLiveTemplatesProvider {
     @Override
     public String[] getDefaultLiveTemplateFiles() {
 
         return new String[]{
-                "/resources/templates/live/"
+                "/fileTemplates/internal/live/View"
         };
+    }
+
+    @Nullable
+    @Override
+    public String[] getHiddenLiveTemplateFiles() {
+        return new String[0];
     }
 }

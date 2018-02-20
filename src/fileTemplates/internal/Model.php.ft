@@ -1,14 +1,22 @@
 #set ($d = "$")
 <?php
 
-namespace $ns;
+namespace Sentinel\Models\Events;
 
-use Rhubarb\Leaf\Leaves\LeafModel;
+use Rhubarb\Stem\Models\Model;
+use Rhubarb\Stem\Schema\Columns\AutoIncrementColumn;
+use Rhubarb\Stem\Schema\ModelSchema;
 
-class $class extends LeafModel
+class ${Name} extends Model
 {
-    public function __constructor()
+    protected function createSchema()
     {
-        parent::__construct();
+        ${d}schema = new ModelSchema('tbl${Model}');
+
+        ${d}schema->addColumn(
+            new AutoIncrementColumn('${Model}ID')
+        );
+
+        return ${d}schema;
     }
 }

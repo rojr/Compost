@@ -2,24 +2,15 @@ package com.gmail.robmadeyou.compost.actions;
 
 import com.gmail.robmadeyou.compost.dialogs.AddNewLeafDialog;
 import com.gmail.robmadeyou.compost.util.CompostFileManagementUtil;
-import com.intellij.ide.fileTemplates.FileTemplate;
-import com.intellij.ide.fileTemplates.FileTemplateManager;
-import com.intellij.ide.fileTemplates.FileTemplateUtil;
 import com.intellij.openapi.actionSystem.AnAction;
 import com.intellij.openapi.actionSystem.AnActionEvent;
 import com.intellij.openapi.actionSystem.PlatformDataKeys;
 import com.intellij.openapi.vfs.VirtualFile;
 import com.intellij.openapi.wm.WindowManager;
-import org.apache.velocity.Template;
-import org.apache.velocity.VelocityContext;
-import org.apache.velocity.app.VelocityEngine;
 
-import java.io.IOException;
-import java.io.StringWriter;
 import java.util.HashMap;
-import java.util.Map;
 
-public class AddLeafDialog extends AnAction {
+public class AddLeaf extends AnAction {
     @Override
     public void actionPerformed(AnActionEvent e) {
         AddNewLeafDialog dialog = new AddNewLeafDialog();
@@ -35,15 +26,14 @@ public class AddLeafDialog extends AnAction {
                     for (String name : this.values.keySet()) {
                         try {
                             if (name.equals("ViewBridge")) {
-                                CompostFileManagementUtil.createJSFileFromTemplate(e.getProject(), file, name, (String)current.get(name), current);
+                                CompostFileManagementUtil.createJSFileFromTemplate(e.getProject(), file, name, (String) current.get(name), current);
                             } else {
-                                CompostFileManagementUtil.createPhpFileFromTemplate(e.getProject(), file, name, (String)current.get(name), current);
+                                CompostFileManagementUtil.createPhpFileFromTemplate(e.getProject(), file, name, (String) current.get(name), current);
                             }
                         } catch (Exception ex) {
                             System.out.println(ex.getMessage());
                         }
                     }
-
                 }
             }
         });

@@ -4,6 +4,9 @@
 namespace $ns;
 
 use Rhubarb\Leaf\Views\View;
+#if($!${ViewBridge})
+use Rhubarb\Leaf\Leaves\LeafDeploymentPackage;
+#end
 
 class $class extends View
 {

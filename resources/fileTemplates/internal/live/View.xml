@@ -1,0 +1,9 @@
+<templateSet group="View">
+    <template name="!vbc" value="[$TEXT$]($LINK$)$END$" description="New link reference." toReformat="false" toShortenFQNames="false">
+        <variable name="TEXT" expression="" defaultValue="" alwaysStopAt="true" />
+        <variable name="LINK" expression="complete()" defaultValue="" alwaysStopAt="true" />
+        <context>
+            <option name="PHP" value="true" />
+        </context>
+    </template>
+</templateSet>
