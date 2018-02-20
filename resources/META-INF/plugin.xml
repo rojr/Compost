@@ -39,12 +39,12 @@
     <actions>
         <group id="RhubarbMenu" text="Rhubarb" popup="true" icon="CompostIcons.RHUBARB_ICON">
             <add-to-group group-id="NewGroup" anchor="first"/>
-            <action id="AddLeafDialog" class="com.gmail.robmadeyou.compost.actions.AddLeaf" text="New Leaf"
+            <action id="AddLeafDialog" class="com.gmail.robmadeyou.compost.actions.AddLeaf" text="New Leaf" icon="CompostIcons.LEAF_ICON"
                     description="Adding leafs yo">
                 <keyboard-shortcut keymap="$default" first-keystroke="shift alt E"/>
             </action>
             <action id="ModelCreate" class="com.gmail.robmadeyou.compost.actions.ModelCreate" text="Model Create"
-                    description="Create a Rhubarb model"/>
+                    description="Create a Rhubarb model" icon="CompostIcons.MODULE_ICON"/>
         </group>
     </actions>
 
