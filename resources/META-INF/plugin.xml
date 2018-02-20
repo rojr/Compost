@@ -2,15 +2,14 @@
     <id>com.gmail.robmadeyou.compost</id>
     <name>Compost</name>
     <version>1.0</version>
-    <vendor email="support@yourcompany.com" url="http://www.yourcompany.com">Rojrpany</vendor>
+    <vendor email="robmadeyou@gmail.com" url="robmadeyou@gmail.com">Rojrpany</vendor>
 
     <description><![CDATA[
   <h1>Helping Rhubarb applications grow nice and big!</h1>
     ]]></description>
 
     <change-notes><![CDATA[
-      Add change notes here.<br>
-      <em>most HTML tags may be used</em>
+    Initial version released, with helpful templates for quick leaf creation
     ]]>
     </change-notes>
 
