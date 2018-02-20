@@ -3,7 +3,8 @@
 
 # Log file
 *.log
-**/.idea/workspace.xml **/.idea/tasks.xml
+/.idea/workspace.xml
+**/.idea/tasks.xml
 *.iml
 out/
 
