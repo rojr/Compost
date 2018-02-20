@@ -32,6 +32,8 @@ public class AddNewModelDialog extends InputDialog {
     }
 
     private void onOK() {
+        this.onOkPressed.values.put("Name", textField1.getText());
         this.onOkPressed.onOK();
+        dispose();
     }
 }

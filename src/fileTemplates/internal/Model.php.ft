@@ -11,10 +11,10 @@ class ${Name} extends Model
 {
     protected function createSchema()
     {
-        ${d}schema = new ModelSchema('tbl${Model}');
+        ${d}schema = new ModelSchema('tbl${Name}');
 
         ${d}schema->addColumn(
-            new AutoIncrementColumn('${Model}ID')
+            new AutoIncrementColumn('${Name}ID')
         );
 
         return ${d}schema;
