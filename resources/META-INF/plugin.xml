@@ -1,7 +1,7 @@
 <idea-plugin>
     <id>com.gmail.robmadeyou.compost</id>
     <name>Compost</name>
-    <version>1.0.1</version>
+    <version>1.0.2</version>
     <vendor email="robmadeyou@gmail.com" url="robmadeyou@gmail.com">Rojrpany</vendor>
 
     <description><![CDATA[
@@ -39,12 +39,12 @@
     <actions>
         <group id="RhubarbMenu" text="Rhubarb" popup="true" icon="CompostIcons.RHUBARB_ICON">
             <add-to-group group-id="NewGroup" anchor="first"/>
-            <action id="AddLeafDialog" class="com.gmail.robmadeyou.compost.actions.AddLeaf" text="New Leaf" icon="CompostIcons.LEAF_ICON"
-                    description="Adding leafs yo">
+            <action id="AddLeafDialog" class="com.gmail.robmadeyou.compost.actions.AddLeaf" text="Leaf" icon="CompostIcons.LEAF_ICON"
+                    description="Adding a new leaf">
                 <keyboard-shortcut keymap="$default" first-keystroke="shift alt E"/>
             </action>
-            <action id="ModelCreate" class="com.gmail.robmadeyou.compost.actions.ModelCreate" text="Model Create"
-                    description="Create a Rhubarb model" icon="CompostIcons.MODULE_ICON"/>
+            <action id="ModelCreate" class="com.gmail.robmadeyou.compost.actions.ModelCreate" text="Model"
+                    description="Add a new Model" icon="CompostIcons.MODULE_ICON"/>
         </group>
     </actions>
 
