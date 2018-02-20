@@ -1,10 +1,15 @@
 package com.gmail.robmadeyou.compost.actions;
 
+import com.gmail.robmadeyou.compost.dialogs.AddNewLeafDialog;
+import com.gmail.robmadeyou.compost.util.CompostFileManagementUtil;
 import com.intellij.ide.fileTemplates.FileTemplate;
 import com.intellij.ide.fileTemplates.FileTemplateManager;
 import com.intellij.ide.fileTemplates.FileTemplateUtil;
 import com.intellij.openapi.actionSystem.AnAction;
 import com.intellij.openapi.actionSystem.AnActionEvent;
+import com.intellij.openapi.actionSystem.PlatformDataKeys;
+import com.intellij.openapi.vfs.VirtualFile;
+import com.intellij.openapi.wm.WindowManager;
 import org.apache.velocity.Template;
 import org.apache.velocity.VelocityContext;
 import org.apache.velocity.app.VelocityEngine;
@@ -17,7 +22,7 @@ import java.util.Map;
 public class AddLeafDialog extends AnAction {
     @Override
     public void actionPerformed(AnActionEvent e) {
-       /* AddNewLeafDialog dialog = new AddNewLeafDialog();
+        AddNewLeafDialog dialog = new AddNewLeafDialog();
 
         VirtualFile file = PlatformDataKeys.VIRTUAL_FILE.getData(e.getDataContext());
 
@@ -25,10 +30,15 @@ public class AddLeafDialog extends AnAction {
             @Override
             public void onOK() {
                 if (file != null) {
-                    HashMap<String, String> current = (HashMap<String, String>) this.values.clone();
+                    HashMap<String, Object> current = (HashMap<String, Object>) this.values.clone();
+
                     for (String name : this.values.keySet()) {
                         try {
-                            CompostFileManagementUtil.createFileWithTemplate(e.getProject(), file, name, current.get(name), current);
+                            if (name.equals("ViewBridge")) {
+                                CompostFileManagementUtil.createJSFileFromTemplate(e.getProject(), file, name, (String)current.get(name), current);
+                            } else {
+                                CompostFileManagementUtil.createPhpFileFromTemplate(e.getProject(), file, name, (String)current.get(name), current);
+                            }
                         } catch (Exception ex) {
                             System.out.println(ex.getMessage());
                         }
@@ -38,19 +48,9 @@ public class AddLeafDialog extends AnAction {
             }
         });
 
+        dialog.setLocationRelativeTo(WindowManager.getInstance().getFrame(e.getProject()));
+        dialog.setTitle("Add a new Leaf set");
         dialog.pack();
-        dialog.setVisible(true);*/
-
-        /*  first, get and initialize an engine  */
-        FileTemplateManager manager = FileTemplateManager.getInstance(e.getProject());
-
-        FileTemplate leafTemplate = manager.getInternalTemplate("View");
-
-        HashMap map = new HashMap<String, String>();
-        map.put("viewBridgeName", "Robert!");
-        try {
-            String s = leafTemplate.getText(map);
-        } catch (IOException ex) {}
-
+        dialog.setVisible(true);
     }
 }

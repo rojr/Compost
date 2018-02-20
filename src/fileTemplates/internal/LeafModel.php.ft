@@ -1,10 +1,11 @@
+#set ($d = "$")
 <?php
 
-namespace {{ ns }};
+namespace $ns;
 
 use Rhubarb\Leaf\Leaves\LeafModel;
 
-class {{ class }} extends LeafModel
+class $class extends LeafModel
 {
     public function __constructor()
     {

@@ -1,8 +1,6 @@
 package com.gmail.robmadeyou.compost.dialogs;
 
 import com.gmail.robmadeyou.compost.listeners.ui.InputEnableCheckbox;
-import com.intellij.codeInsight.template.impl.TemplateImpl;
-import com.intellij.openapi.project.Project;
 
 import javax.swing.*;
 import java.awt.event.*;

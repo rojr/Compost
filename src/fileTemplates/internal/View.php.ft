@@ -1,33 +1,35 @@
+#set ($d = "$")
 <?php
 
-namespace $nameSpace;
+namespace $ns;
 
 use Rhubarb\Leaf\Views\View;
 
-class $className extends View
+class $class extends View
 {
-    /** @var $modelName \$model **/
-    protected \$model;
+#if($!${LeafModel})
+    /** @var ${LeafModel} ${d}model **/
+    protected ${d}model;
+#end
 
     protected function createSubLeaves()
     {
+        parent::createSubLeaves();
     }
 
     protected function printViewContent()
     {
     }
 
-    #if ($viewBridgeName != "")
+#if($!${ViewBridge})
     public function getDeploymentPackage()
     {
-        return new LeafDeploymentPackage(
-            __DIR__ . '/$viewBridgeName'
-        );
+        return new LeafDeploymentPackage(__DIR__ . '/${ViewBridge}.js');
     }
 
     protected function getViewBridgeName()
     {
-        return '$viewBridgeName';
+        return '${ViewBridge}';
     }
-    #end
+#end
 }

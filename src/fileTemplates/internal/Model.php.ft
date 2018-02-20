@@ -1,0 +1,14 @@
+#set ($d = "$")
+<?php
+
+namespace $ns;
+
+use Rhubarb\Leaf\Leaves\LeafModel;
+
+class $class extends LeafModel
+{
+    public function __constructor()
+    {
+        parent::__construct();
+    }
+}

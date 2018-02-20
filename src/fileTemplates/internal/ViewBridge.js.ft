@@ -1,4 +1,4 @@
-rhubarb.vb.create('{{ ViewBridge }}', function() {
+rhubarb.vb.create('$ViewBridge', function() {
     return {
         attachEvents:function() {
 

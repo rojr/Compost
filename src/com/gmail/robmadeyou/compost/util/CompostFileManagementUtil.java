@@ -1,5 +1,11 @@
 package com.gmail.robmadeyou.compost.util;
 
+import com.intellij.ide.fileTemplates.FileTemplate;
+import com.intellij.ide.fileTemplates.FileTemplateManager;
+import com.intellij.lang.Language;
+import com.intellij.openapi.application.Application;
+import com.intellij.openapi.application.ApplicationManager;
+import com.intellij.openapi.command.WriteCommandAction;
 import com.intellij.openapi.project.Project;
 import com.intellij.openapi.util.io.StreamUtil;
 import com.intellij.openapi.vfs.VfsUtil;
@@ -11,6 +17,7 @@ import com.intellij.psi.codeStyle.CodeStyleManager;
 import com.intellij.psi.impl.file.PsiDirectoryFactory;
 import com.jetbrains.php.lang.PhpLanguage;
 import com.jetbrains.php.lang.psi.PhpFileImpl;
+import org.apache.commons.codec.language.bm.Lang;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
@@ -18,41 +25,65 @@ import java.io.IOException;
 import java.util.Map;
 
 public class CompostFileManagementUtil {
-    public static void createFileWithTemplate(Project project, @NotNull VirtualFile virtualFile, @NotNull String template, @NotNull String className, Map<String, String> vars) throws Exception {
-        if (fileExists(virtualFile, className)) {
+    /**
+     * @param p Project
+     * @param f Virtual File that the new class will need to be inserted in
+     * @param t Template Name
+     * @param n File Name
+     * @param m String -> Object map for the template to fill in the blanks
+     * @throws Exception
+     */
+    public static void createFileFromTemplate(Project p, VirtualFile f, String t, String n, String fN, Map<String, Object> m) throws Exception
+    {
+        if (fileExists(f, n)) {
             throw new Exception("File already exists");
         }
 
-        String fileTemplateContent = getFileTemplateContent("/resources/fileTemplates/" + template + ".template");
-        if (fileTemplateContent == null) {
-            throw new Exception("Template content error");
-        }
+        FileTemplateManager manager = FileTemplateManager.getInstance(p);
+        FileTemplate template = manager.getInternalTemplate(t);
 
-        String ns = getNamespaceForVirtualFolder(project, virtualFile);
+        String fileContent = template.getText(m);
 
-        vars.put("ns", ns);
-        vars.put("class", className);
-        for (Map.Entry<String, String> entry : vars.entrySet()) {
-            fileTemplateContent = fileTemplateContent.replace("{{ " + entry.getKey() + " }}", entry.getValue());
-        }
+        PsiFile fileFromText = PsiFileFactory.getInstance(p).createFileFromText(fN, PhpLanguage.INSTANCE, fileContent);
 
-        PsiFile fileFromText = PsiFileFactory.getInstance(project).createFileFromText(className + ".php", PhpLanguage.INSTANCE, fileTemplateContent);
-
-        CodeStyleManager.getInstance(project).reformat(fileFromText);
-        PsiDirectoryFactory.getInstance(project).createDirectory(virtualFile).add(fileFromText);
+        Runnable r = () -> PsiDirectoryFactory.getInstance(p).createDirectory(f).add(fileFromText);
+        WriteCommandAction.runWriteCommandAction(p, r);
     }
 
-    public static void createPhpClassFromTemplate()
+    /**
+     * Same as createFileFromTemplate() but specific for Php classes, will auto populate the namespace
+     *
+     * @param p Project
+     * @param f Virtual File that the new class will need to be inserted in
+     * @param t Template Name
+     * @param n File Name
+     * @param m String -> Object map for the template to fill in the blanks
+     * @throws Exception
+     */
+    public static void createPhpFileFromTemplate(Project p, VirtualFile f, String t, String n, Map<String, Object> m) throws Exception
     {
+        m.put("ns", getPHPNamespaceForVirtualFolder(p, f));
+        m.put("class", n);
 
+        createFileFromTemplate(p, f, t, n, n + ".php",m);
     }
 
-    public static void createFileFromTemplate()
+    /**
+     * Same as createFileFromTemplate() but specific for JS files
+     *
+     * @param p Project
+     * @param f Virtual File that the new class will need to be inserted in
+     * @param t Template Name
+     * @param n File Name
+     * @param m String -> Object map for the template to fill in the blanks
+     * @throws Exception
+     */
+    public static void createJSFileFromTemplate(Project p, VirtualFile f, String t, String n, Map<String, Object> m) throws Exception
     {
-        
+        createFileFromTemplate(p, f, t, n, n + ".js",m);
     }
 
-    private static String getNamespaceForVirtualFolder(Project project, VirtualFile virtualFile)
+    public static String getPHPNamespaceForVirtualFolder(Project project, VirtualFile virtualFile)
     {
         String namespace = "";
 

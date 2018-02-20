@@ -97,7 +97,7 @@
                 <properties>
                   <editable value="true"/>
                   <enabled value="false"/>
-                  <name value="Model"/>
+                  <name value="LeafModel"/>
                 </properties>
               </component>
               <component id="8cad4" class="javax.swing.JCheckBox" binding="modelCheckBox">
