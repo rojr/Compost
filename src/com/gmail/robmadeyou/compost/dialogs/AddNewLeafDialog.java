@@ -4,9 +4,8 @@ import com.gmail.robmadeyou.compost.listeners.ui.InputEnableCheckbox;
 
 import javax.swing.*;
 import java.awt.event.*;
-import java.util.HashMap;
 
-public class AddNewLeafDialog extends JDialog {
+public class AddNewLeafDialog extends InputDialog {
     private JPanel contentPane;
     private JButton buttonOK;
     private JButton buttonCancel;
@@ -17,8 +16,6 @@ public class AddNewLeafDialog extends JDialog {
     private JCheckBox viewCheckBox;
     private JTextField viewBridgeName;
     private JCheckBox viewBridgeCheckBox;
-
-    private AddNewLeafDialogEvent onOkPressed;
 
     public AddNewLeafDialog() {
         setContentPane(contentPane);
@@ -64,37 +61,15 @@ public class AddNewLeafDialog extends JDialog {
         });
     }
 
-    public AddNewLeafDialog setOnOkPressed(AddNewLeafDialogEvent event)
-    {
-        this.onOkPressed = event;
-
-        return this;
-    }
-
     private void onOK() {
         if (this.onOkPressed != null) {
-            this.onOkPressed.raise(viewName, modelName, leafNameTextField, viewBridgeName);
+            for (JTextField f : new JTextField[]{viewName, modelName, leafNameTextField, viewBridgeName}) {
+                if (f.isEnabled()) {
+                    this.onOkPressed.values.put(f.getName(), f.getText());
+                }
+            }
             this.onOkPressed.onOK();
         }
         dispose();
-    }
-
-    private void onCancel() {
-        dispose();
-    }
-
-    public abstract static class AddNewLeafDialogEvent {
-
-        public HashMap<String,String> values = new HashMap<>();
-
-        public abstract void onOK();
-
-        public void raise(JTextField view, JTextField model, JTextField leaf, JTextField bridge) {
-            for (JTextField f : new JTextField[]{view, model, leaf, bridge}) {
-                if (f.isEnabled()) {
-                    values.put(f.getName(), f.getText());
-                }
-            }
-        }
     }
 }

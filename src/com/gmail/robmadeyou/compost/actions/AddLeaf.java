@@ -17,7 +17,7 @@ public class AddLeaf extends AnAction {
 
         VirtualFile file = PlatformDataKeys.VIRTUAL_FILE.getData(e.getDataContext());
 
-        dialog.setOnOkPressed(new AddNewLeafDialog.AddNewLeafDialogEvent() {
+        dialog.setOnOkPressed(new AddNewLeafDialog.OkEvent() {
             @Override
             public void onOK() {
                 if (file != null) {
