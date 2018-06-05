@@ -1,7 +1,7 @@
 <idea-plugin>
     <id>com.gmail.robmadeyou.compost</id>
     <name>Compost</name>
-    <version>1.0.2</version>
+    <version>1.0.4</version>
     <vendor email="robmadeyou@gmail.com" url="robmadeyou@gmail.com">Rojrpany</vendor>
 
     <description><![CDATA[

@@ -1,7 +1,7 @@
 #set ($d = "$")
 <?php
 
-namespace Sentinel\Models\Events;
+namespace ${ns};
 
 use Rhubarb\Stem\Models\Model;
 use Rhubarb\Stem\Schema\Columns\AutoIncrementColumn;

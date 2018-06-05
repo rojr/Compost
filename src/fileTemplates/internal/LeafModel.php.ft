@@ -7,7 +7,7 @@ use Rhubarb\Leaf\Leaves\LeafModel;
 
 class $class extends LeafModel
 {
-    public function __constructor()
+    public function __construct()
     {
         parent::__construct();
     }
